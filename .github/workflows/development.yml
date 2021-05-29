@@ -1,0 +1,32 @@
+name: Development
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ${{matrix.os}}-latest
+    
+    strategy:
+      matrix:
+        os:
+          - ubuntu
+    
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Installing dependencies (ubuntu)
+      if: matrix.os == 'ubuntu'
+      run: |
+        sudo apt-get install fish
+        wget -O chruby-0.3.9.tar.gz https://github.com/postmodern/chruby/archive/v0.3.9.tar.gz
+        tar -xzvf chruby-0.3.9.tar.gz
+        cd chruby-0.3.9/
+        sudo make install
+    
+    - name: Run tests
+      timeout-minutes: 5
+      shell: 'script -q -e -c "fish {0}"'
+      run: |
+        pwd
+        make test/opt/rubies
+        make test
