@@ -7,10 +7,13 @@
 ## Install
 
 ```bash
-wget -O chruby-fish-0.8.2.tar.gz https://github.com/JeanMertz/chruby-fish/archive/v0.8.2.tar.gz
-tar -xzvf chruby-fish-0.8.2.tar.gz
-cd chruby-fish-0.8.2/
+wget -O chruby-fish-1.0.0.tar.gz https://github.com/ioquatix/chruby-fish/archive/v1.0.0.tar.gz
+tar -xzvf chruby-fish-1.0.0.tar.gz
+cd chruby-fish-1.0.0/
 make install
+
+# You might need this too:
+set -U XDG_DATA_DIRS /usr/local/share
 ```
 
 ### Homebrew
