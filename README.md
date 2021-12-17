@@ -14,6 +14,9 @@ make install
 
 # You might need this too:
 set -U XDG_DATA_DIRS /usr/local/share
+
+# If you are on apple silicon and using homebrew, you will want to change your PREFIX
+env PREFIX=(brew --prefix) make install
 ```
 
 ### Homebrew
